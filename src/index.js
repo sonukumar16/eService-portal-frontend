@@ -7,8 +7,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import configureStore from './store/configStore';
 
-const { store } = configureStore();
-
+const store  = configureStore();
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
