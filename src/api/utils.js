@@ -1,18 +1,17 @@
 import { HTTP_CODE } from "./httpConstants";
-const { SUCCESS,CREATED, SERVER_ERROR, BAD_REQUEST } = HTTP_CODE;
+const { BAD_REQUEST } = HTTP_CODE;
 
 export const handleResponse = (response) => {
-  const { status, data, statusText } = response;
-  if (status === SUCCESS || status === CREATED) return data;
-  if (status === SERVER_ERROR) {
-   return statusText;
+  const { status, data, fieldError, } = response;
+  if (status === BAD_REQUEST) {
+    throw fieldError;
   }
-  if(status === BAD_REQUEST) {
-    return data;
-  }
+  if(status===401)
+  throw data;
+  return data;
 };
 
 export const handleError = (error) => {
-  throw error.response && error.response.data;
+  throw error;
 };
- 
+

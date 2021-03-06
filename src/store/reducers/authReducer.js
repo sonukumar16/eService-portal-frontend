@@ -1,6 +1,3 @@
-
-import get from "lodash/get"
-
 import {
   LOGIN,
   LOGIN_CLEAR,
@@ -15,29 +12,28 @@ export default function authReducer(state = initialState.auth, actions) {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        isLoading: false,
-        data: [...state.data, {
-          searchType: payload.searchType,
-          searchText: payload.searchText,
-          data: get(payload.result, 'items', [])
-        }],
+        loading: false,
+        data: payload,
+        error: null,
 
       };
     case LOGIN_FAILURE:
       return {
         ...state,
-        isLoading: false,
-        error: payload
+        loading: false,
+        error: payload,
+        data: null,
       };
     case LOGIN:
       return {
         ...state,
-        isLoading: true
+        loading: true
       };
     case LOGIN_CLEAR:
       return {
         ...state,
-        data: []
+        data: null,
+        error: null
       };
     default:
       return state;

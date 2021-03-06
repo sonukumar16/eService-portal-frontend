@@ -13,7 +13,6 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-
 const useStyles = makeStyles((theme) => ({
     grow: {
         flexGrow: 1
@@ -154,7 +153,7 @@ const ToolbarComponent = (props) => {
 
                     <ExitToAppIcon />
                 </IconButton>
-                <p>Logout</p>
+                <p onClick={props.logoutHandler}>Logout</p>
             </MenuItem>
         </Menu>
     )

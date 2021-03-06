@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders admin dashboard should match snapshot 1`] = `
+<main
+  className="MuiContainer-root makeStyles-container-1 MuiContainer-maxWidthLg"
+>
+  <h1
+    className="MuiTypography-root MuiTypography-h5"
+  >
+    Welcome to admin dashboard
+  </h1>
+</main>
+`;

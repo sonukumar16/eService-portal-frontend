@@ -1,7 +1,7 @@
 import axios from "axios";
 import { handleResponse, handleError } from "./utils";
 
-const baseURL = "https://api.github.com/searchs/"
+const baseURL = "http://localhost:8080/api/eservice"
 
 const axiosInstance =  axios.create({
    baseURL,
@@ -9,8 +9,8 @@ const axiosInstance =  axios.create({
     return status >= 200 && status < 404; // default
   }});
 
-export const fetchFromGit = (url) =>
+export const login = (data) =>
 axiosInstance
-    .get(url)
+    .post(`/login`, data)
     .then(handleResponse)
     .catch(handleError);

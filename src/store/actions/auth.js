@@ -6,8 +6,8 @@ import {
   } from "./actionTypes";
   import * as Api from "../../api/Api";
 
-  export function loginSuccess(result, searchType, searchText) {
-    return { type: LOGIN_SUCCESS, payload:{result, searchType, searchText} };
+  export function loginSuccess(payload) {
+    return { type: LOGIN_SUCCESS, payload };
   }
   export function loginFailure(error) {
     return { type: LOGIN_FAILURE, payload: error };
@@ -17,16 +17,16 @@ import {
     return { type: LOGIN };
   }
 
-  export function clearFetchedData () {
+  export function clearLoginData () {
     return { type: LOGIN_CLEAR };
   }
   
-  export function login(searchType, searchText) {
+  export function login(data) {
     return (dispatch) => {
       dispatch(loginRequest());
       return Api
-        .login(`${searchType}?q=${searchText}`)
-        .then(result => dispatch(loginSuccess(result,searchType, searchText)))
+        .login(data)
+        .then(result => dispatch(loginSuccess(result.data)))
         .catch(error => {
           dispatch(loginFailure(error));
           throw error;
